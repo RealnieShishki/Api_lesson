@@ -6,11 +6,14 @@ import re
 from collections import Counter
 from json import dump as jdump
 
+
 def vac_request():
     DOMAIN = 'http://api.hh.ru/'
     url_vac = f'{DOMAIN}vacancies'
     rate = ExchangeRates()
-    vacancy = input('Введите название вакансии на английском: ')
+    with open('vac.txt', "r") as f:
+        vacancy = f.read()
+    print(vacancy)
     area_vac = area_req()
 
     params = {'text': vacancy,
@@ -74,4 +77,6 @@ def vac_request():
         jdump([result], f)
 
 
-vac_request()
+
+
+

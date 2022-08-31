@@ -3,7 +3,8 @@ import requests
 def area_req():
     DOMAIN = 'http://api.hh.ru/'
     country_url = f'{DOMAIN}areas/'
-    area = input('Введите название региона: ')
+    with open('area.txt', 'r', encoding='UTF-8') as f:
+        area = f.read()
     if area.islower:
         area = area.capitalize()
     result = requests.get(country_url).json()
